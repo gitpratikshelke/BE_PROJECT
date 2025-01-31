@@ -1,0 +1,25 @@
+from google.colab import drive
+import json
+import os
+import shutil
+import zipfile
+
+
+# Path to the zip file (change this to your zip file's path)
+zip_file_path = "/content/drive/MyDrive/FBHM.zip"  # Replace with your zip file path
+# Directory to extract the images into
+extracted_folder = "/content/memes1"
+# Create the extraction directory if it doesn't exist
+os.makedirs(extracted_folder, exist_ok=True)
+# Create the extraction directory if it doesn't exist
+os.makedirs(extracted_folder, exist_ok=True)
+
+# Extract the zip file
+with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+    zip_ref.extractall(extracted_folder)
+
+print(f"Images extracted to: {extracted_folder}")
+
+# List the extracted files
+extracted_files = os.listdir(extracted_folder)
+print(f"Extracted files: {extracted_files}")
