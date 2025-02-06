@@ -1,0 +1,66 @@
+pip install ultralytics
+
+
+
+from ultralytics import YOLO
+
+class ToxicMemeClassifier(nn.Module):
+    def __init__(self, num_classes=2):
+        super(ToxicMemeClassifier, self).__init__()
+        self.lxmert = LxmertModel.from_pretrained("unc-nlp/lxmert-base-uncased")
+
+        # Load YOLOv8 model
+        self.yolov8 = YOLO("yolov8n.pt")  # You can use 'yolov8s.pt', 'yolov8m.pt', etc. for different sizes
+        self.yolov8_backbone = self.yolov8.model.model[:-1]  # Remove the detection head
+
+        # Freeze YOLOv8 backbone layers
+        for param in self.yolov8_backbone.parameters():
+            param.requires_grad = False
+
+        # Add a fully connected layer to match the visual feature dimension of LXMERT
+        self.visual_fc = nn.Linear(1024, self.lxmert.config.visual_feat_dim)  # Adjust the input size based on YOLOv8 output
+
+        self.fc = nn.Linear(self.lxmert.config.hidden_size, num_classes)
+
+    def forward(self, input_ids, attention_mask, images):
+        # Extract features using YOLOv8 backbone
+        visual_feats = self.yolov8_backbone(images)
+        visual_feats = visual_feats.mean(dim=[2, 3])  # Global average pooling
+        visual_feats = self.visual_fc(visual_feats).unsqueeze(1)
+
+        # Prepare visual position features (zeros as placeholders)
+        batch_size = visual_feats.size(0)
+        visual_pos = torch.zeros(batch_size, 1, 4).to(visual_feats.device)
+
+        # Forward pass through LXMERT
+        outputs = self.lxmert(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            visual_feats=visual_feats,
+            visual_pos=visual_pos,
+        )
+        logits = self.fc(outputs.pooled_output)
+        return logits
+
+# remaining code is same...........
+
+
+# Initialize the model
+model = ToxicMemeClassifier(num_classes=2)
+
+# Move model to the appropriate device
+model = model.to(device)
+
+# Train the model
+train_model(model, train_loader, optimizer, criterion, device, epochs)
+
+# Evaluate the model
+evaluate_model(model, test_loader, device)
+
+
+
+
+
+
+
+
