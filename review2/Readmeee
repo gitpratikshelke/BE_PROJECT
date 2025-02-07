@@ -23,3 +23,42 @@ print(f"Images extracted to: {extracted_folder}")
 # List the extracted files
 extracted_files = os.listdir(extracted_folder)
 print(f"Extracted files: {extracted_files}")
+---------------------------------------------------
+import os
+
+class ToxicMemeDataset(Dataset):
+    def __init__(self, data_list, img_dir, tokenizer, max_len, transform=None):
+        self.data = data_list
+        self.img_dir = img_dir
+        self.tokenizer = tokenizer
+        self.max_len = max_len
+        self.transform = transform
+
+    def __getitem__(self, idx):
+        item = self.data[idx]
+        text = item["text"]
+        encoding = self.tokenizer(
+            text,
+            max_length=self.max_len,
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt",
+        )
+
+        # Ensure correct image path handling
+        img_path = os.path.join(self.img_dir, item["img"].lstrip("/"))  # Remove leading '/'
+
+        # Check if image exists
+        if not os.path.exists(img_path):
+            raise FileNotFoundError(f"Image not found: {img_path}")
+
+        image = Image.open(img_path).convert("RGB")
+        if self.transform:
+            image = self.transform(image)
+
+        return {
+            "input_ids": encoding["input_ids"].squeeze(0).long(),
+            "attention_mask": encoding["attention_mask"].squeeze(0).long(),
+            "image": image,
+            "label": torch.tensor(item["label"], dtype=torch.long),
+        }
