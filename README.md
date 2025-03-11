@@ -72,7 +72,7 @@ Access the web interface at **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
 
 ## Result
 
-![Result1](images/result1jpg)
+![Result1](images/result1.jpg)
 ![Result2](images/result2.jpg)
 
 ## Performance
