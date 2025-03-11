@@ -70,6 +70,10 @@ Access the web interface at **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
 
 - The extracted text and image features are passed through a deep learning classifier to predict toxicity.
 
+## Result
+
+![Result1](images/result1jpg)
+![Result2](images/result2.jpg)
 
 ## Performance
 
