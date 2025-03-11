@@ -51,7 +51,7 @@ Access the web interface at **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
 
 ## Model Architecture
 
-![System Architecture](images/system_architecture.png)
+![System Architecture](images/system_architecture.jpg)
 
 ### Text Extraction
 
