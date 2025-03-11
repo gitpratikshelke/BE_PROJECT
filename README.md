@@ -25,20 +25,6 @@ Ensure you have the following installed:
 - Pip
 - Virtual Environment (optional but recommended)
 
-### Setup
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/MemeShield.git
-cd MemeShield
-
-# Create a virtual environment (optional but recommended)
-python -m venv env
-source env/bin/activate  # On Windows use `env\Scripts\activate`
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
 ## Usage
 ### Running the Flask App
 ```bash
