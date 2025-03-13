@@ -31,7 +31,7 @@ Ensure you have the following installed:
 - Pip
 - Virtual Environment (optional but recommended)
 
-
+Model Download Link : https://drive.google.com/file/d/1pOPd1U6M9TO252bLhDplwtQD3FqH0Ikk/view?usp=drive_link
 ## Usage
 
 ### Running the Flask App
