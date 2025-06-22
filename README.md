@@ -1,91 +1,76 @@
-# MemeShield - Multimodal Content Moderation System for Detecting Toxic Memes
+# Save the complete README content into a .md file
+readme_content = """
+# 🛡️ Shielding Social Media: Detection of Toxic Memes for Automated Moderation
 
-## Overview
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![Vision+NLP](https://img.shields.io/badge/Multimodal-Vision%20%2B%20Text-green)
 
-MemeShield is an advanced multimodal content moderation system designed to detect toxic memes using both textual and visual analysis. The system integrates **EasyOCR, LXMERT, and ResNet** to efficiently extract and analyze text from images while evaluating their content for toxicity. The project achieves an **accuracy of 75-80%** in detecting harmful content, ensuring a safer digital environment.
+## 📌 Abstract
 
-## Features
+This project tackles the challenge of moderating toxic content in **internet memes**, which combine images and text to spread potentially harmful or offensive messages. We propose a **multimodal detection system** that uses **OCR**, **NLP**, and **Vision-Language Fusion** via **SigLIP** to classify memes as **toxic** or **non-toxic**, ensuring safer social media environments.
 
-- **Multimodal Analysis**: Utilizes text and image data for more accurate toxicity detection.
-- **High Accuracy**: Achieves 75-80% detection accuracy using advanced deep learning models.
-- **Efficient OCR Integration**: Uses EasyOCR for robust text extraction from memes.
-- **Flask-Based Deployment**: Offers a user-friendly web interface for easy interaction.
-- **Optimized Backend**: Python-based optimizations improve performance by 30%.
+---
 
-## Tech Stack
+## 🧠 System Architecture
 
-- **Programming Language**: Python
-- **Deep Learning Frameworks**: PyTorch
-- **Optical Character Recognition (OCR)**: EasyOCR
-- **Multimodal Model**: LXMERT (Language and Vision Model)
-- **Image Processing**: ResNet
-- **Web Framework**: Flask
+<img src="‎Screenshot 2025-05-21 125355.png" alt="System Architecture" width="100%"/>
 
-## Installation
+> Architecture Diagram: Fusion-based Toxic Meme Classifier with OCR, NLP (BERT), Vision Transformer, and SigLIP.
 
-### Prerequisites
+### 🔄 Flow Description:
 
-Ensure you have the following installed:
+1. **Input Meme**: Raw image meme with visual and textual content.
+2. **Text Preprocessing**:
+   - Uses `PaddleOCR` and `KOSMOS-2` for text extraction.
+   - Applies BERT tokenizer → input IDs + attention mask.
+3. **Image Preprocessing**:
+   - Image resized and transformed into pixel tensors.
+4. **Feature Embedding**:
+   - Text and image inputs are separately embedded.
+   - Passed into **SigLIP** model for multimodal fusion.
+5. **Classification**:
+   - Uses **Sigmoid activation** + **Cross Entropy Loss**.
+   - Optimized to predict `Toxic` or `Non-Toxic`.
 
-- Python (>=3.8)
-- Pip
-- Virtual Environment (optional but recommended)
+---
 
-Model Download Link : https://drive.google.com/file/d/1pOPd1U6M9TO252bLhDplwtQD3FqH0Ikk/view?usp=drive_link
-## Usage
+## 🚀 Features
 
-### Running the Flask App
+- 🔍 Detects **toxicity in memes** using a deep learning fusion approach.
+- 🔤 Supports **OCR** from meme text using **PaddleOCR** & **KOSMOS-2**.
+- 🧠 Leverages **BERT** for semantic understanding of meme text.
+- 👁️‍🗨️ Uses **SigLIP (Google)** for image-text fusion and classification.
+- 📈 Provides performance metrics and visualizations.
 
-```bash
-python app.py
-```
+---
 
-Access the web interface at **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
+## 🛠️ Tech Stack
 
-### Detecting Toxic Memes
+| Component           | Technology           |
+|---------------------|----------------------|
+| Language            | Python 3.8+          |
+| OCR Engine          | PaddleOCR, KOSMOS-2  |
+| Text Encoder        | BERT (transformers)  |
+| Image Encoder       | Vision Transformer (ViT) |
+| Fusion Model        | SigLIP               |
+| DL Framework        | PyTorch              |
+| Visualization       | Matplotlib, Seaborn  |
 
-1. Upload an image containing a meme.
-2. The system extracts text and analyzes the image.
-3. A toxicity score is generated along with a classification (safe or toxic).
-4. Results are displayed on the web interface.
+🔮 Future Scope
+🌍 Multilingual toxic meme detection
 
-## Model Architecture
+🎥 Video meme frame-based detection
 
-![System Architecture](images/system_architecture.jpg)
+🌐 Web portal for real-time moderation
 
-### Text Extraction
+📦 Deploy as browser extension / REST API
 
-- **EasyOCR** extracts text from memes.
-- Preprocessing is done to remove noise.
 
-### Image Analysis
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-- **ResNet** extracts deep visual features from memes.
+⭐ Support
+If you found this project useful, please consider giving it a ⭐ and sharing it with others!
+"""
 
-### Multimodal Fusion
-
-- **LXMERT** processes both textual and visual features together to determine toxicity.
-
-### Classification
-
-- The extracted text and image features are passed through a deep learning classifier to predict toxicity.
-
-## Result
-
-![Result1](images/result1.jpg)
-![Result2](images/result2.jpg)
-
-## Performance
-
-- Accuracy: **75-80%**
-- Backend Optimization: **30% boost in efficiency**
-
-## Future Enhancements
-
-- Integrate real-time meme scanning in social media platforms.
-- Improve text-based analysis using large language models (LLMs).
-- Deploy as a cloud-based moderation service.
-
-## Contributing
-
-Contributions are welcome! Feel free to submit issues and pull requests.
