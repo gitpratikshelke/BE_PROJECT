@@ -13,7 +13,7 @@ This project tackles the challenge of moderating toxic content in **internet mem
 
 ## 🧠 System Architecture
 
-<img src="‎images/op1.png" alt="System Architecture" width="100%"/>
+<img src="‎images/op1.png/op1.png" alt="System Architecture" width="100%"/>
 
 > Architecture Diagram: Fusion-based Toxic Meme Classifier with OCR, NLP (BERT), Vision Transformer, and SigLIP.
 
@@ -57,6 +57,7 @@ This project tackles the challenge of moderating toxic content in **internet mem
 | Visualization       | Matplotlib, Seaborn  |
 
 🔮 Future Scope
+
 🌍 Multilingual toxic meme detection
 
 🎥 Video meme frame-based detection
