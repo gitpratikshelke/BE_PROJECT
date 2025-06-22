@@ -1,5 +1,4 @@
-# Save the complete README content into a .md file
-readme_content = """
+
 # 🛡️ Shielding Social Media: Detection of Toxic Memes for Automated Moderation
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -14,7 +13,7 @@ This project tackles the challenge of moderating toxic content in **internet mem
 
 ## 🧠 System Architecture
 
-<img src="‎Screenshot 2025-05-21 125355.png" alt="System Architecture" width="100%"/>
+<img src="‎images/op1.png" alt="System Architecture" width="100%"/>
 
 > Architecture Diagram: Fusion-based Toxic Meme Classifier with OCR, NLP (BERT), Vision Transformer, and SigLIP.
 
