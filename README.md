@@ -16,14 +16,14 @@ This project tackles the challenge of moderating toxic content in **internet mem
 <img src="images/op1.png" alt="System Architecture" width="100%"/>
 
 
-> Architecture Diagram: Fusion-based Toxic Meme Classifier with OCR, NLP (BERT), Vision Transformer, and SigLIP.
+> Architecture Diagram: Fusion-based Toxic Meme Classifier with PaddleOCR, Kosmos-2, Vision Transformer, and SigLIP.
 
 ### 🔄 Flow Description:
 
 1. **Input Meme**: Raw image meme with visual and textual content.
 2. **Text Preprocessing**:
    - Uses `PaddleOCR` and `KOSMOS-2` for text extraction.
-   - Applies BERT tokenizer → input IDs + attention mask.
+  
 3. **Image Preprocessing**:
    - Image resized and transformed into pixel tensors.
 4. **Feature Embedding**:
@@ -39,7 +39,6 @@ This project tackles the challenge of moderating toxic content in **internet mem
 
 - 🔍 Detects **toxicity in memes** using a deep learning fusion approach.
 - 🔤 Supports **OCR** from meme text using **PaddleOCR** & **KOSMOS-2**.
-- 🧠 Leverages **BERT** for semantic understanding of meme text.
 - 👁️‍🗨️ Uses **SigLIP (Google)** for image-text fusion and classification.
 - 📈 Provides performance metrics and visualizations.
 
@@ -69,9 +68,11 @@ This project tackles the challenge of moderating toxic content in **internet mem
 
 
 📄 License
+
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ⭐ Support
+
 If you found this project useful, please consider giving it a ⭐ and sharing it with others!
-"""
+
 
